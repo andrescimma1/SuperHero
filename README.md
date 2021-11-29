@@ -1,11 +1,18 @@
 # SuperHero
 
-
 CHALLENGE FRONTEND - React rocket
 
 Objetivo
 
-Desarrollar una aplicación para crear un equipo de superhéroes que consumirá una API externa y mostrará diferentes atributos a nivel individual de cada miembro y del equipo consolidado. point_right Consumir los endpoints de la siguiente API para realizar las distintas operaciones. Deberás autenticarte con Facebook para realizar peticiones a la misma. point_right Adicionalmente, las diferentes secciones que tendrá la app deberán protegerse verificando que el usuario autenticado disponga de un token que se almacenará en localStorage. El mismo, se obtendrá de una API con datos de muestra. Si un usuario intenta ingresar a cualquier ruta sin estar autenticado, deberá ser redirigido al login. point_right Para el manejo de peticiones HTTP deberá utilizarse la librería Axios. point_right El sitio deberá ser responsive, y utilizar Bootstrap como punto de partida para aprovechar las características de la librería. warning ¡No es indispensable hacer todo! Mientras más completes, mayor puntaje obtendrás, pero puedes enviar la app hasta el estadío que tengas en base a tu conocimiento actual. Recuerda que el objetivo del challenge es entender tu nivel de conocimiento actual.
+Desarrollar una aplicación para crear un equipo de superhéroes que consumirá una API externa y mostrará diferentes atributos a nivel individual de cada miembro y del equipo consolidado.
+
+Consumir los endpoints de la siguiente API para realizar las distintas operaciones. Deberás autenticarte con Facebook para realizar peticiones a la misma.
+
+Adicionalmente, las diferentes secciones que tendrá la app deberán protegerse verificando que el usuario autenticado disponga de un token que se almacenará en localStorage. El mismo, se obtendrá de una API con datos de muestra. Si un usuario intenta ingresar a cualquier ruta sin estar autenticado, deberá ser redirigido al login.
+
+Para el manejo de peticiones HTTP deberá utilizarse la librería Axios.
+
+El sitio deberá ser responsive, y utilizar Bootstrap como punto de partida para aprovechar las características de la librería. warning ¡No es indispensable hacer todo! Mientras más completes, mayor puntaje obtendrás, pero puedes enviar la app hasta el estadío que tengas en base a tu conocimiento actual. Recuerda que el objetivo del challenge es entender tu nivel de conocimiento actual.
 
 Requerimientos funcionales En la pantalla de Home se deberá mostrar, además de los miembros del equipo: ? Acumulativo de powerstats, agrupados por cada uno, es decir: suma total de intelligence, strength, etc. de todos los miembros individuales del equipo. ? El powerstat que más acumulativo tenga debería aparecer arriba para categorizar el tipo de equipo (inteligencia, fuerza, etc.). ? Pesos y altura promedio del equipo.
 
