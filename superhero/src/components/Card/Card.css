@@ -1,8 +1,16 @@
+body {
+	overflow-x: hidden;
+}
+
 img {
-	max-width: 250px;
 	max-height: 300px;
 }
 
 .row {
 	padding: 3rem;
+}
+
+.card {
+	justify-content: center !important;
+	align-items: center !important;
 }

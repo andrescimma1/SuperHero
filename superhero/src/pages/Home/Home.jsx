@@ -26,8 +26,33 @@ export default function Home(props) {
       });
   };
 
+  const validate = (superhero) => {
+    let exist = false;
+    let countGood = 0;
+    let countBad = 0;
+
+    team.map((teamHero) => {
+      if (teamHero.biography.alignment === "good") countGood++;
+      else countBad++;
+
+      if (teamHero.id === superhero.id) exist = true;
+    });
+
+    if (!exist) {
+      if (superhero.biography.alignment === "good" && countGood < 3)
+        return true;
+      if (superhero.biography.alignment === "bad" && countBad < 3) return true;
+    }
+
+    return false;
+  };
+
   const addToTeam = (superhero) => {
-    setTeam([...team, superhero]);
+    if (validate(superhero)) setTeam([...team, superhero]);
+  };
+
+  const deleteFromTeam = (superhero) => {
+    setTeam(team.filter((teamHero) => teamHero.id !== superhero.id));
   };
 
   return (
@@ -37,7 +62,11 @@ export default function Home(props) {
         <div>
           {superheros != undefined ? (
             <>
-              <Card superheros={superheros} addToTeam={addToTeam} />
+              <Card
+                superheros={superheros}
+                addToTeam={addToTeam}
+                inHome={inHome}
+              />
             </>
           ) : (
             <>No results..</>
@@ -45,7 +74,11 @@ export default function Home(props) {
         </div>
       ) : team.length > 0 ? (
         <>
-          <Card superheros={team} addToTeam={addToTeam} />
+          <Card
+            superheros={team}
+            inHome={inHome}
+            deleteFromTeam={deleteFromTeam}
+          />
         </>
       ) : (
         <>No results..</>

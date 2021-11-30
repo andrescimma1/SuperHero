@@ -27,7 +27,7 @@ export default function Nav(props) {
               <li className="nav-item">
                 <a
                   onClick={() => setInHome(true)}
-                  className="nav-link active"
+                  className="nav-link"
                   href="#"
                 >
                   Home

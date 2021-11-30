@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import "./Card.css";
+import { BsFillTrashFill } from "react-icons/bs";
+import { FaTrash } from "react-icons/fa";
 
 export default function Card(props) {
-  const { superheros, addToTeam } = props;
+  const { superheros, addToTeam, inHome, deleteFromTeam } = props;
 
   console.log(superheros[0].name);
 
@@ -15,17 +17,27 @@ export default function Card(props) {
               <img src={superhero.image.url} class="card-img-top" alt="..." />
               <div class="card-body">
                 <h5 class="card-title">{superhero.name}</h5>
-                <Link to={`/details/${superhero.id}`} class="btn btn-primary">
+                <p class="card-text">
+                  {superhero.biography.alignment.toUpperCase()}
+                </p>
+                <Link to={`/details/${superhero.id}`} class="btn btn-secondary">
                   See more..
                 </Link>
-
-                <hr />
-                <button
-                  onClick={() => addToTeam(superhero)}
-                  class="btn btn-primary"
-                >
-                  Add to team
-                </button>
+                {inHome ? (
+                  <button
+                    onClick={() => addToTeam(superhero)}
+                    class="btn btn-success"
+                  >
+                    Add to team
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => deleteFromTeam(superhero)}
+                    class="btn btn-danger"
+                  >
+                    <FaTrash style={{ color: "black" }} />
+                  </button>
+                )}
               </div>
             </div>
           </div>
