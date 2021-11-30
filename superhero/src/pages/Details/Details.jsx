@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./Details.css";
+import { Link } from "react-router-dom";
 
 export default function Details(props) {
 	const [loading, setLoading] = useState(true);
@@ -23,13 +25,43 @@ export default function Details(props) {
 	return (
 		<div>
 			{superhero ? (
-				<div>
-					{superhero.appearance["eye-color"]}
-					{superhero.appearance["hair-color"]}
-					{superhero.appearance.height[1]}
-					{superhero.appearance.weight[1]}
-					{superhero.name}
-					{superhero.work.occupation}
+				<div class="card mb-3">
+					<div class="row g-0">
+						<div class="col-md-6">
+							<img
+								src={superhero.image.url}
+								class="img-fluid rounded-start"
+								alt="..."
+							/>
+						</div>
+						<div class="col-md-6">
+							<div class="card-body">
+								<h5 class="card-title">{superhero.name}</h5>
+								<p class="card-text">
+									Height: {superhero.appearance.height[1]}
+								</p>
+								<p class="card-text">
+									Weight: {superhero.appearance.weight[1]}
+								</p>
+								<p class="card-text">
+									Eye-color: {superhero.appearance["eye-color"]}
+								</p>
+								<p class="card-text">
+									Hair-color: {superhero.appearance["hair-color"]}
+								</p>
+								<p class="card-text">Occupation: {superhero.work.occupation}</p>
+								<p class="card-text">
+									<small class="text-muted">Last updated 3 mins ago</small>
+								</p>
+								<Link to="/" class="btn btn-secondary">
+									Back{" "}
+								</Link>
+								<button type="button" class="btn btn-success">
+									Add to team
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
 			) : (
 				<div>No found.</div>

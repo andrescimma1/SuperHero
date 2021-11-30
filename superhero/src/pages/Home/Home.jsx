@@ -7,6 +7,8 @@ export default function Home(props) {
   //   const [loading, setLoading] = useState(true);
   const API_KEY = "4382962791714286";
   const [superheros, setSuperheros] = useState(undefined);
+  const [team, setTeam] = useState([]);
+  const [inHome, setInHome] = useState(true);
 
   //   useEffect(() => {
   //     if (loading) {
@@ -24,18 +26,30 @@ export default function Home(props) {
       });
   };
 
+  const addToTeam = (superhero) => {
+    setTeam([...team, superhero]);
+  };
+
   return (
     <>
-      <Nav handleSearch={handleSearch} />
-      <div>
-        {superheros != undefined ? (
-          <>
-            <Card superheros={superheros} />
-          </>
-        ) : (
-          <>No results..</>
-        )}
-      </div>
+      <Nav handleSearch={handleSearch} setInHome={setInHome} />
+      {inHome ? (
+        <div>
+          {superheros != undefined ? (
+            <>
+              <Card superheros={superheros} addToTeam={addToTeam} />
+            </>
+          ) : (
+            <>No results..</>
+          )}
+        </div>
+      ) : team.length > 0 ? (
+        <>
+          <Card superheros={team} addToTeam={addToTeam} />
+        </>
+      ) : (
+        <>No results..</>
+      )}
     </>
   );
 }
