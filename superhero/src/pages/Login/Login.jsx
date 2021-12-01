@@ -1,11 +1,12 @@
 import { Formik, Form, Field } from "formik";
-
 import * as Yup from "yup";
 
 export default function Login(props) {
+	const { getToken } = props;
+
 	const SignupSchema = Yup.object().shape({
-		firstName: Yup.string()
-			.min(6, "Too Short!")
+		password: Yup.string()
+			.min(2, "Too Short!")
 			.max(50, "Too Long!")
 			.required("Required"),
 
@@ -20,28 +21,51 @@ export default function Login(props) {
 					password: "",
 				}}
 				validationSchema={SignupSchema}
-				onSubmit={(values) => {
+				onSubmit={({ email, password }) => {
 					// same shape as initial values
 
-					console.log(values);
+					getToken(email, password);
 				}}
 			>
 				{({ errors, touched }) => (
 					<Form>
-						<Field name="email" type="email" />
+						<div class="form-group">
+							<label for="exampleInputEmail1">Email address</label>
+							<Field
+								class="form-control"
+								id="exampleInputEmail1"
+								placeholder="Enter email"
+								name="email"
+								type="email"
+							/>
 
-						{errors.email && touched.email ? (
-							<div class="alert alert-danger" role="alert">
-								{errors.email}
-							</div>
-						) : null}
+							{errors.email && touched.email ? (
+								<div class="alert alert-danger" role="alert">
+									{errors.email}
+								</div>
+							) : null}
+						</div>
 
-						<Field name="password" type="password" />
+						<label for="exampleInputPassword1">Password</label>
+						<Field
+							type="password"
+							class="form-control"
+							id="exampleInputPassword1"
+							placeholder="Password"
+							name="password"
+						/>
+						<small id="passwordHelp" class="form-text text-muted">
+							We'll never share your password with anyone else.
+						</small>
 
 						{errors.password && touched.password ? (
-							<div>{errors.password}</div>
+							<div class="alert alert-danger" role="alert">
+								{errors.password}
+							</div>
 						) : null}
-						<button type="submit">Login</button>
+						<button type="submit" class="btn btn-primary">
+							Login
+						</button>
 					</Form>
 				)}
 			</Formik>

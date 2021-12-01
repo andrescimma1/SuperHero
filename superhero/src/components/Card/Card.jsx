@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "./Card.css";
-import { BsFillTrashFill } from "react-icons/bs";
 import { FaTrash } from "react-icons/fa";
 
 export default function Card(props) {

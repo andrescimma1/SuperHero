@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import Nav from "../../components/Nav/Nav.jsx";
 import Card from "../../components/Card/Card.jsx";
+import StatusBar from "../../components/StatusBar/StatusBar.jsx";
 
 export default function Home(props) {
   //   const [loading, setLoading] = useState(true);
@@ -74,6 +75,7 @@ export default function Home(props) {
         </div>
       ) : team.length > 0 ? (
         <>
+          <StatusBar />
           <Card
             superheros={team}
             inHome={inHome}
