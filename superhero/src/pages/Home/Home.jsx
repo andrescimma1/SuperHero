@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "../../components/Nav/Nav.jsx";
 import Card from "../../components/Card/Card.jsx";
 import StatusBar from "../../components/StatusBar/StatusBar.jsx";
@@ -10,12 +10,18 @@ export default function Home(props) {
   const [superheros, setSuperheros] = useState(undefined);
   const [team, setTeam] = useState([]);
   const [inHome, setInHome] = useState(true);
+  const [teamStats, setTeamStats] = useState({
+    combat: 0,
+    durability: 0,
+    intelligence: 0,
+    power: 0,
+    speed: 0,
+    strength: 0,
+  });
 
-  //   useEffect(() => {
-  //     if (loading) {
-  //       setLoading(false);
-  //     }
-  //   });
+  useEffect(() => {
+    console.log(teamStats);
+  }, [team, teamStats]);
 
   const handleSearch = (input) => {
     axios
@@ -49,11 +55,79 @@ export default function Home(props) {
   };
 
   const addToTeam = (superhero) => {
-    if (validate(superhero)) setTeam([...team, superhero]);
+    if (validate(superhero)) {
+      setTeam([...team, superhero]);
+
+      let sum = [
+        teamStats.combat,
+        teamStats.durability,
+        teamStats.intelligence,
+        teamStats.power,
+        teamStats.speed,
+        teamStats.strength,
+      ];
+      if (superhero.powerstats.combat !== "null")
+        sum[0] += parseInt(superhero.powerstats.combat, 10);
+      if (superhero.powerstats.durability !== "null")
+        sum[1] += parseInt(superhero.powerstats.durability, 10);
+      if (superhero.powerstats.intelligence !== "null")
+        sum[2] += parseInt(superhero.powerstats.intelligence, 10);
+      if (superhero.powerstats.power !== "null")
+        sum[3] += parseInt(superhero.powerstats.power, 10);
+      if (superhero.powerstats.speed !== "null")
+        sum[4] += parseInt(superhero.powerstats.speed, 10);
+      if (superhero.powerstats.strength !== "null")
+        sum[5] += parseInt(superhero.powerstats.strength, 10);
+
+      setTeamStats({
+        combat: sum[0],
+        durability: sum[1],
+        intelligence: sum[2],
+        power: sum[3],
+        speed: sum[4],
+        strength: sum[5],
+      });
+
+      console.log(superhero);
+
+      console.log(teamStats);
+    }
   };
 
   const deleteFromTeam = (superhero) => {
     setTeam(team.filter((teamHero) => teamHero.id !== superhero.id));
+    let res = [
+      teamStats.combat,
+      teamStats.durability,
+      teamStats.intelligence,
+      teamStats.power,
+      teamStats.speed,
+      teamStats.strength,
+    ];
+
+    if (superhero.powerstats.combat !== "null")
+      res[0] -= parseInt(superhero.powerstats.combat, 10);
+    if (superhero.powerstats.durability !== "null")
+      res[1] -= parseInt(superhero.powerstats.durability, 10);
+    if (superhero.powerstats.intelligence !== "null")
+      res[2] -= parseInt(superhero.powerstats.intelligence, 10);
+    if (superhero.powerstats.power !== "null")
+      res[3] -= parseInt(superhero.powerstats.power, 10);
+    if (superhero.powerstats.speed !== "null")
+      res[4] -= parseInt(superhero.powerstats.speed, 10);
+    if (superhero.powerstats.strength !== "null")
+      res[5] -= parseInt(superhero.powerstats.strength, 10);
+
+    setTeamStats({
+      combat: res[0],
+      durability: res[1],
+      intelligence: res[2],
+      power: res[3],
+      speed: res[4],
+      strength: res[5],
+    });
+
+    console.log(teamStats);
   };
 
   return (
@@ -75,7 +149,7 @@ export default function Home(props) {
         </div>
       ) : team.length > 0 ? (
         <>
-          <StatusBar />
+          <StatusBar teamStats={teamStats} team={team} />
           <Card
             superheros={team}
             inHome={inHome}
