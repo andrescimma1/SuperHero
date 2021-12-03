@@ -9,7 +9,7 @@ export default function Nav(props) {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Navbar
+            Superhero
           </a>
           <button
             className="navbar-toggler"

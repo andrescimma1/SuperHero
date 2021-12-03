@@ -1,78 +1,111 @@
 import "./StatusBar.css";
+import React, { useEffect, useState } from "react";
 
 export default function StatusBar(props) {
 	const { teamStats, team } = props;
-	console.log(teamStats);
+
+	let max = 0;
+	const [maxString, setMaxString] = useState("");
+
+	useEffect(() => {
+		for (const property in teamStats) {
+			if (teamStats[property] > max) {
+				max = teamStats[property];
+				setMaxString(`${property}`);
+			}
+		}
+	}, [teamStats]);
 
 	return (
 		<div class="container">
-			<h4>Combat</h4>
-			<div class="progress">
-				<div
-					class="progress-bar progress-bar-striped progress-bar-animated"
-					role="progressbar"
-					style={{
-						width: `${(
-							teamStats.combat / team.length
-						).toString()}%`,
-					}}
-				></div>
-			</div>
-			<h4>Durability</h4>
-			<div class="progress">
-				<div
-					class="progress-bar progress-bar-striped progress-bar-animated"
-					role="progressbar"
-					style={{
-						width: `${(
-							teamStats.durability / team.length
-						).toString()}%`,
-					}}
-				></div>
-			</div>
-			<h4>Intelligence</h4>
-			<div class="progress">
-				<div
-					class="progress-bar progress-bar-striped progress-bar-animated"
-					role="progressbar"
-					style={{
-						width: `${(
-							teamStats.intelligence / team.length
-						).toString()}%`,
-					}}
-				></div>
-			</div>
-			<h4>Power</h4>
-			<div class="progress">
-				<div
-					class="progress-bar progress-bar-striped progress-bar-animated"
-					role="progressbar"
-					style={{
-						width: `${(teamStats.power / team.length).toString()}%`,
-					}}
-				></div>
-			</div>
-			<h4>Speed</h4>
-			<div class="progress">
-				<div
-					class="progress-bar progress-bar-striped progress-bar-animated"
-					role="progressbar"
-					style={{
-						width: `${(teamStats.speed / team.length).toString()}%`,
-					}}
-				></div>
-			</div>
-			<h4>Strength</h4>
-			<div class="progress">
-				<div
-					class="progress-bar progress-bar-striped progress-bar-animated"
-					role="progressbar"
-					style={{
-						width: `${(
-							teamStats.strength / team.length
-						).toString()}%`,
-					}}
-				></div>
+			<div class="stats-container">
+				<h4 style={{ color: "red" }}>
+					{maxString.charAt(0).toUpperCase() + maxString.slice(1)}{" "}
+				</h4>
+				<h6>Combat</h6>
+				<div class="progress">
+					<div
+						class="progress-bar"
+						role="progressbar"
+						style={{
+							width: `${(
+								teamStats.combat / team.length
+							).toString()}%`,
+						}}
+					>
+						{teamStats.combat}
+					</div>
+				</div>
+				<h6>Durability</h6>
+				<div class="progress">
+					<div
+						class="progress-bar"
+						role="progressbar"
+						style={{
+							width: `${(
+								teamStats.durability / team.length
+							).toString()}%`,
+						}}
+					>
+						{teamStats.durability}
+					</div>
+				</div>
+				<h6>Intelligence</h6>
+				<div class="progress">
+					<div
+						class="progress-bar"
+						role="progressbar"
+						style={{
+							width: `${(
+								teamStats.intelligence / team.length
+							).toString()}%`,
+						}}
+					>
+						{teamStats.intelligence}
+					</div>
+				</div>
+				<h6>Power</h6>
+				<div class="progress">
+					<div
+						class="progress-bar"
+						role="progressbar"
+						style={{
+							width: `${(
+								teamStats.power / team.length
+							).toString()}%`,
+						}}
+					>
+						{teamStats.power}
+					</div>
+				</div>
+				<h6>Speed</h6>
+				<div class="progress">
+					<div
+						class="progress-bar"
+						role="progressbar"
+						style={{
+							width: `${(
+								teamStats.speed / team.length
+							).toString()}%`,
+						}}
+					>
+						{teamStats.speed}
+					</div>
+				</div>
+				<h6>Strength</h6>
+				<div class="progress">
+					<div
+						class="progress-bar"
+						role="progressbar"
+						style={{
+							width: `${(
+								teamStats.strength / team.length
+							).toString()}%`,
+						}}
+					>
+						{teamStats.strength}
+					</div>
+				</div>
 			</div>
 		</div>
 	);

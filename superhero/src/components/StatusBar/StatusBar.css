@@ -1,3 +1,11 @@
 .progress {
-	margin-bottom: 2rem;
+	margin-bottom: 0.8rem;
+}
+
+h6 {
+	font-size: 1rem !important;
+}
+
+.stats-container {
+	width: 100%;
 }
