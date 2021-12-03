@@ -1,5 +1,6 @@
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
+import "./Login.css";
 
 export default function Login(props) {
 	const { getToken } = props;
@@ -14,7 +15,7 @@ export default function Login(props) {
 	});
 
 	return (
-		<div>
+		<div class="container-login">
 			<Formik
 				initialValues={{
 					email: "",
@@ -29,8 +30,10 @@ export default function Login(props) {
 			>
 				{({ errors, touched }) => (
 					<Form>
-						<div class="form-group">
-							<label for="exampleInputEmail1">Email address</label>
+						<div class="form-group" style={{ margin: "1.5rem 0" }}>
+							<label for="exampleInputEmail1">
+								Email address
+							</label>
 							<Field
 								class="form-control"
 								id="exampleInputEmail1"
@@ -54,15 +57,15 @@ export default function Login(props) {
 							placeholder="Password"
 							name="password"
 						/>
-						<small id="passwordHelp" class="form-text text-muted">
-							We'll never share your password with anyone else.
-						</small>
 
 						{errors.password && touched.password ? (
 							<div class="alert alert-danger" role="alert">
 								{errors.password}
 							</div>
 						) : null}
+						<small id="passwordHelp" class="form-text text-muted">
+							We'll never share your password with anyone else.
+						</small>
 						<button type="submit" class="btn btn-primary">
 							Login
 						</button>

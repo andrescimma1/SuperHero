@@ -9,8 +9,8 @@ export default function StatusBar(props) {
 
 	useEffect(() => {
 		for (const property in teamStats) {
-			if (teamStats[property] > max) {
-				max = teamStats[property];
+			if (parseInt(teamStats[property], 10) > max) {
+				max = parseInt(teamStats[property], 10);
 				setMaxString(`${property}`);
 			}
 		}

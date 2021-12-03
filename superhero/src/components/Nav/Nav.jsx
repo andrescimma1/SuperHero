@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Nav.css";
 
 export default function Nav(props) {
   const { handleSearch, setInHome } = props;
@@ -6,7 +7,7 @@ export default function Nav(props) {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
             Superhero
@@ -48,7 +49,7 @@ export default function Nav(props) {
                 onChange={(e) => setInput(e.target.value)}
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="Search your hero.."
                 aria-label="Search"
               />
             </form>
