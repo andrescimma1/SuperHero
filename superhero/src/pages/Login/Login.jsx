@@ -63,10 +63,12 @@ export default function Login(props) {
 								{errors.password}
 							</div>
 						) : null}
-						<small id="passwordHelp" class="form-text text-muted">
-							We'll never share your password with anyone else.
-						</small>
-						<button type="submit" class="btn btn-primary">
+
+						<button
+							type="submit"
+							style={{ margin: "1.5rem 0" }}
+							class="btn btn-primary"
+						>
 							Login
 						</button>
 					</Form>

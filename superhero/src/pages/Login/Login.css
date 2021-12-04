@@ -1,5 +1,6 @@
 input {
-	background-color: #17202a !important;
+	background-color: transparent !important;
+	outline: none;
 }
 
 .container-login {
@@ -8,10 +9,14 @@ input {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	background-image: url("https://cutewallpaper.org/21/spiderman-logo-wallpapers/HD-Spiderman-Logo-Wallpaper.jpg");
+	background-position-x: center;
+	background-position-y: center;
+	background-repeat: no-repeat;
 }
 
 form {
-	width: 500px;
+	width: 270px;
 	align-self: center;
 }
 
@@ -20,7 +25,11 @@ form {
 }
 
 .alert-danger {
-	background-color: #e74c3c;
-	color: #641e16;
-	border: 0.1rem solid #641e16;
+	background-color: #0e0e0e;
+	color: red;
+	border: 0.1rem solid red;
+}
+
+button {
+	background-color: #2b3784;
 }

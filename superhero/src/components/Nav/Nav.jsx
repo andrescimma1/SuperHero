@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Nav.css";
+import { GiSpiderMask } from "react-icons/gi";
 
 export default function Nav(props) {
   const { handleSearch, setInHome } = props;
@@ -9,8 +10,9 @@ export default function Nav(props) {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
+          <GiSpiderMask style={{ color: "#B11313" }} size={40} />
           <a className="navbar-brand" href="#">
-            Superhero
+            Superheros
           </a>
           <button
             className="navbar-toggler"

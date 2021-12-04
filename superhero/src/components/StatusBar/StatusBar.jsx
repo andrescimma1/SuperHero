@@ -19,7 +19,7 @@ export default function StatusBar(props) {
 	return (
 		<div class="container">
 			<div class="stats-container">
-				<h4 style={{ color: "red" }}>
+				<h4 style={{ color: "#B11313" }}>
 					{maxString.charAt(0).toUpperCase() + maxString.slice(1)}{" "}
 				</h4>
 				<h6>Combat</h6>
