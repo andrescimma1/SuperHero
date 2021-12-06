@@ -23,9 +23,15 @@ export default function Card(props) {
                   />
                   <i class="fa fa-search fa-5x float-right"></i>
                   <h3 class="card-title">{superhero.name}</h3>
-                  <p class="card-text">
-                    {superhero.biography.alignment.toUpperCase()}
-                  </p>
+                  {superhero.biography.alignment === "good" ? (
+                    <h5 class="card-text" style={{ color: "#F2F520" }}>
+                      {superhero.biography.alignment.toUpperCase()}
+                    </h5>
+                  ) : (
+                    <h5 class="card-text" style={{ color: "#E50000" }}>
+                      EVIL
+                    </h5>
+                  )}
                 </div>
               </div>
               <div

@@ -7,13 +7,13 @@ img {
 }
 
 .row {
-	padding: 3rem;
+	padding: 1rem;
 }
 
 .card {
 	justify-content: center !important;
 	align-items: center !important;
-	background-color: #0c2145 !important;
+	background-color: #313131 !important;
 }
 
 .card-body {

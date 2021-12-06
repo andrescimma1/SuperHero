@@ -148,16 +148,17 @@ export default function Home(props) {
           )}
         </div>
       ) : team.length > 0 ? (
-        <>
+        <div style={{ padding: "0.5rem 0" }}>
+          <h2>Your team</h2>
           <StatusBar teamStats={teamStats} team={team} />
           <Card
             superheros={team}
             inHome={inHome}
             deleteFromTeam={deleteFromTeam}
           />
-        </>
+        </div>
       ) : (
-        <>No results..</>
+        <>Please, go to Home, search and add a superhero to your team..</>
       )}
     </>
   );
