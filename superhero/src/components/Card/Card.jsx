@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Card.css";
 import { FaTrash } from "react-icons/fa";
+import { GrAdd } from "react-icons/gr";
 import StatusBar from "../StatusBar/StatusBar.jsx";
 
 export default function Card(props) {
@@ -16,11 +17,7 @@ export default function Card(props) {
             <div class="card card-flip h-100" style={{ width: "18rem" }}>
               <div class="card-front text-white bg-dark">
                 <div class="card-body">
-                  <img
-                    src={superhero.image.url}
-                    class="card-img-top"
-                    alt="..."
-                  />
+                  <img src={superhero.image.url} class="card-img-top" alt="" />
                   <i class="fa fa-search fa-5x float-right"></i>
                   <h3 class="card-title">{superhero.name}</h3>
                   {superhero.biography.alignment === "good" ? (
@@ -46,30 +43,30 @@ export default function Card(props) {
                     back!
                   </p>*/}
                   <div style={{ padding: "0 24px" }}>
-                    <Link
-                      to={`/details/${superhero.id}`}
-                      class="btn btn-secondary"
-                      style={{ float: "left" }}
-                    >
-                      See more..
-                    </Link>
                     {inHome ? (
                       <button
                         onClick={() => addToTeam(superhero)}
                         class="btn btn-success"
-                        style={{ float: "right" }}
+                        style={{ float: "left" }}
                       >
-                        Add to team
+                        <GrAdd />
                       </button>
                     ) : (
                       <button
                         onClick={() => deleteFromTeam(superhero)}
                         class="btn btn-danger"
-                        style={{ float: "right" }}
+                        style={{ float: "left" }}
                       >
                         <FaTrash style={{ color: "black" }} />
                       </button>
                     )}
+                    <Link
+                      to={`/details/${superhero.id}`}
+                      class="btn btn-secondary"
+                      style={{ float: "right" }}
+                    >
+                      See more..
+                    </Link>
                   </div>
                 </div>
               </div>

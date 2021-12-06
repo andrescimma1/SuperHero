@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Nav from "../../components/Nav/Nav.jsx";
 import Card from "../../components/Card/Card.jsx";
 import StatusBar from "../../components/StatusBar/StatusBar.jsx";
+import "./Home.css";
 
 export default function Home(props) {
   //   const [loading, setLoading] = useState(true);
@@ -87,10 +88,6 @@ export default function Home(props) {
         speed: sum[4],
         strength: sum[5],
       });
-
-      console.log(superhero);
-
-      console.log(teamStats);
     }
   };
 
@@ -144,7 +141,9 @@ export default function Home(props) {
               />
             </>
           ) : (
-            <>No results..</>
+            <h2 style={{ margin: "0.5rem 0.2rem" }}>
+              Search for a superhero by name and add him to your team!
+            </h2>
           )}
         </div>
       ) : team.length > 0 ? (
@@ -158,7 +157,9 @@ export default function Home(props) {
           />
         </div>
       ) : (
-        <>Please, go to Home, search and add a superhero to your team..</>
+        <h2 style={{ margin: "0.5rem 0.2rem" }}>
+          Please, go to Home, search and add a superhero to your team..
+        </h2>
       )}
     </>
   );

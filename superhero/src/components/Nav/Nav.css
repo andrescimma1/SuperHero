@@ -2,3 +2,7 @@ input {
 	background-color: #17202a !important;
 	color: white !important;
 }
+
+#navbarNav {
+	z-index: 100;
+}

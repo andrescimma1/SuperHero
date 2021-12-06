@@ -1,8 +1,9 @@
 .progress {
-	margin-bottom: 0.8rem;
 	background-color: #283747 !important;
 	max-width: 600px;
+	float: center;
 	margin: 0 auto;
+	margin-bottom: 0.8rem;
 }
 
 .progress-bar {
@@ -15,7 +16,4 @@ h6 {
 
 .stats-container {
 	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }

@@ -8,12 +8,14 @@ img {
 
 .row {
 	padding: 1rem;
+	margin-bottom: 2rem;
 }
 
 .card {
 	justify-content: center !important;
 	align-items: center !important;
-	background-color: #313131 !important;
+	background-color: #131313 !important;
+	margin-bottom: 2rem;
 }
 
 .card-body {

@@ -35,7 +35,7 @@ export default function Details(props) {
 							/>
 						</div>
 						<div class="col-md-6">
-							<div class="card-body">
+							<div class="card-body" style={{ height: "400px" }}>
 								<h5 class="card-title">{superhero.name}</h5>
 								<p class="card-text">
 									Height: {superhero.appearance.height[1]}
@@ -44,19 +44,24 @@ export default function Details(props) {
 									Weight: {superhero.appearance.weight[1]}
 								</p>
 								<p class="card-text">
-									Eye-color: {superhero.appearance["eye-color"]}
+									Eye-color:{" "}
+									{superhero.appearance["eye-color"]}
 								</p>
 								<p class="card-text">
-									Hair-color: {superhero.appearance["hair-color"]}
+									Hair-color:{" "}
+									{superhero.appearance["hair-color"]}
 								</p>
-								<p class="card-text">Occupation: {superhero.work.occupation}</p>
 								<p class="card-text">
-									<small class="text-muted">Last updated 3 mins ago</small>
+									Occupation: {superhero.work.occupation}
 								</p>
 								<Link to="/" class="btn btn-secondary">
 									Back{" "}
 								</Link>
-								<button type="button" class="btn btn-success">
+								<button
+									style={{ margin: "0 0 0 0.5rem" }}
+									type="button"
+									class="btn btn-success"
+								>
 									Add to team
 								</button>
 							</div>
