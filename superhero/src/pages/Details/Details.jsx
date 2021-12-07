@@ -69,7 +69,10 @@ export default function Details(props) {
 					</div>
 				</div>
 			) : (
-				<div>No found.</div>
+				<img
+					style={{ padding: "5rem 0" }}
+					src="https://lh3.googleusercontent.com/proxy/alUmWCg1SMSbCEyGfIWKE661T6u3nZGa81mconhsAMp4lUCT7E30t6DrpULs80NSBbXGZiYNIFNXXIipSe1KlfTb"
+				/>
 			)}
 		</div>
 	);

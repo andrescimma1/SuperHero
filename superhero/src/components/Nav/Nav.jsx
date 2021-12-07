@@ -7,10 +7,10 @@ export default function Nav(props) {
   const [input, setInput] = useState("");
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <GiSpiderMask style={{ color: "#B11313" }} size={40} />
-        <a class="navbar-brand" href="#">
+        <a style={{ margin: "0" }} class="navbar-brand" href="#">
           Superheros
         </a>
         <button
@@ -37,18 +37,17 @@ export default function Nav(props) {
               </a>
             </li>
           </ul>
-          <form class="d-flex">
-            <input
-              onChange={(e) => setInput(e.target.value)}
-              class="form-control me-2"
-              type="search"
-              placeholder="Search your hero.."
-              aria-label="Search"
-            />
-          </form>
+          <input
+            onChange={(e) => setInput(e.target.value)}
+            class="form-control my-form"
+            type="search"
+            placeholder="Search your hero.."
+            aria-label="Search"
+          />
           <button
             onClick={() => handleSearch(input)}
             class="btn btn-outline-success"
+            style={{ margin: "0.5rem", padding: "0.45rem 0.75rem" }}
           >
             Search
           </button>

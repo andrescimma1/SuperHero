@@ -19,18 +19,26 @@ export default function Home(props) {
     speed: 0,
     strength: 0,
   });
+  const [added, setAdded] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log(teamStats);
-  }, [team, teamStats]);
+    if (added !== null) {
+      setTimeout(() => {
+        setAdded(null);
+      }, 1500);
+    }
+  }, [team, teamStats, added, loading]);
 
   const handleSearch = (input) => {
+    setLoading(true);
     axios
       .get(`https://superheroapi.com/api.php/${API_KEY}/search/${input}`)
       .then(({ data }) => {
         console.log(data);
         if (data === undefined) setSuperheros(undefined);
         else setSuperheros(data.results);
+        setLoading(false);
       });
   };
 
@@ -88,7 +96,9 @@ export default function Home(props) {
         speed: sum[4],
         strength: sum[5],
       });
-    }
+
+      setAdded(true);
+    } else setAdded(false);
   };
 
   const deleteFromTeam = (superhero) => {
@@ -130,24 +140,47 @@ export default function Home(props) {
   return (
     <>
       <Nav handleSearch={handleSearch} setInHome={setInHome} />
+      {added === null ? (
+        <></>
+      ) : added ? (
+        <div class="alert alert-success fixed-bottom alerts" role="alert">
+          Added to your team!
+        </div>
+      ) : (
+        <div class="alert alert-danger fixed-bottom alerts" role="alert">
+          You can have 3 good and 3 evil heroes, and not repeat heroes
+        </div>
+      )}
       {inHome ? (
         <div>
           {superheros != undefined ? (
             <>
-              <Card
-                superheros={superheros}
-                addToTeam={addToTeam}
-                inHome={inHome}
-              />
+              {loading ? (
+                <img
+                  style={{ padding: "5rem 0" }}
+                  src="https://lh3.googleusercontent.com/proxy/alUmWCg1SMSbCEyGfIWKE661T6u3nZGa81mconhsAMp4lUCT7E30t6DrpULs80NSBbXGZiYNIFNXXIipSe1KlfTb"
+                />
+              ) : (
+                <Card
+                  superheros={superheros}
+                  addToTeam={addToTeam}
+                  inHome={inHome}
+                />
+              )}
             </>
+          ) : loading ? (
+            <img
+              style={{ padding: "5rem 0" }}
+              src="https://lh3.googleusercontent.com/proxy/alUmWCg1SMSbCEyGfIWKE661T6u3nZGa81mconhsAMp4lUCT7E30t6DrpULs80NSBbXGZiYNIFNXXIipSe1KlfTb"
+            />
           ) : (
-            <h2 style={{ margin: "0.5rem 0.2rem" }}>
+            <h2 style={{ margin: "5rem 0.2rem" }}>
               Search for a superhero by name and add him to your team!
             </h2>
           )}
         </div>
       ) : team.length > 0 ? (
-        <div style={{ padding: "0.5rem 0" }}>
+        <div style={{ padding: "5rem 0" }}>
           <h2>Your team</h2>
           <StatusBar teamStats={teamStats} team={team} />
           <Card
@@ -157,7 +190,7 @@ export default function Home(props) {
           />
         </div>
       ) : (
-        <h2 style={{ margin: "0.5rem 0.2rem" }}>
+        <h2 style={{ margin: "5rem 0.2rem" }}>
           Please, go to Home, search and add a superhero to your team..
         </h2>
       )}

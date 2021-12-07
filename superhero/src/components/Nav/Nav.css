@@ -3,6 +3,8 @@ input {
 	color: white !important;
 }
 
-#navbarNav {
-	z-index: 100;
+.my-form {
+	max-width: 200px;
+	display: inline-block !important;
+	padding: 0.4rem 0.75rem !important;
 }
